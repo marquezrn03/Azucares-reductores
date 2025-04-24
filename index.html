@@ -53,7 +53,7 @@
     <header class="bg-gradient-to-r from-sky-600 to-cyan-600 text-white shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4">
             <h1 class="text-2xl md:text-3xl font-bold">11.4 Determinació d'Asucres Reductors</h1>
-             <p class="text-lg font-semibold mt-1">Mètode de H. Rabelain (Iodometria)</p>
+            <p class="text-lg font-semibold mt-1">Mètode de H. Rabelain (Iodometria)</p>
         </div>
     </header>
 
@@ -79,7 +79,7 @@
                      <div class="math-block">$$ I_3^- + 2S_2O_3^{2-} \rightarrow 3I^- + S_4O_6^{2-} $$</div>
                 </li>
                  <li><strong>Assaig en Blanc:</strong> Es fa igual però sense mostra (amb aigua). Tot el Cu(II) inicial reacciona amb KI, generant la màxima quantitat de I₃⁻ i requerint un volum màxim de tiosulfat (\(V_{blanc}\)).</li>
-                 <li><strong>Càlcul:</strong> La diferència \(V_{blanc} - V_{mostra}\) és proporcional als asucres. El mètode Rabelain utilitza la relació empírica: \( \text{Asucres (g/L)} = V_{blanc} (\text{mL}) - V_{mostra} (\text{mL}) \).</li>
+                 <li><strong>Càlcul:</strong> La diferència \(V_{blanc} - V_{mostra}\) és proporcional als asucres. El mètode Rabelain utilitza la relació empírica: \( \text{Asucres (g/L)} = \max(0, V_{blanc} (\text{mL}) - V_{mostra} (\text{mL})) \). Alternativament, es pot calcular a partir de l'equivalència donada.</li>
             </ol>
         </section>
 
@@ -92,7 +92,7 @@
                  <li>Sol. Iodur Potàssic: 300 g KI + 100 mL NaOH 1N en 1 L.</li>
                  <li>Àcid Sulfúric 16% (p/p).</li>
                  <li>Sol. Midó 1% (p/v).</li>
-                 <li>Sol. Tiosulfat Sòdic (~0.055 N): 13.777 g Na₂S₂O₃·5H₂O + 50 mL NaOH 1N en 1 L. (Cal estandarditzar-la per a mètodes no empírics).</li>
+                 <li>Sol. Tiosulfat Sòdic (~0.055 N): 13.777 g Na₂S₂O₃·5H₂O + 50 mL NaOH 1N en 1 L. (Cal estandarditzar-la per a càlculs no empírics).</li>
              </ul>
             <h3>Procediment Experimental</h3>
              <ol class="list-decimal list-inside pl-4 space-y-2">
@@ -108,11 +108,10 @@
 
         <section id="calculs-app" class="mb-12 p-6 rounded-lg shadow-lg section-bg-light dynamic-content">
             <h2 class="text-sky-700 border-b-2 border-sky-200 pb-2 mb-6">Càlculs i Aplicacions Interactives</h2>
-            <h3>1. Càlcul del Contingut d'Asucres Reductors (Mètode Rabelain)</h3>
-            <p>La concentració d'asucres reductors (expressada en g/L) s'obté directament de la diferència de volums de tiosulfat gastats:</p>
+            <h3>1. Càlcul del Contingut d'Asucres Reductors</h3>
+            <h4>Mètode Rabelain (Empíric)</h4>
+            <p>La concentració d'asucres reductors (g/L) s'obté directament:</p>
             <div class="math-block"> $$ \text{Asucres Reductors (g/L)} = \max(0, V_{blanc} (\text{mL}) - V_{mostra} (\text{mL})) $$ </div>
-            <p>Aquesta relació és empírica i vàlida sota les condicions experimentals especificades.</p>
-
              <div class="interactive-block slider-container">
                  <h4 class="text-lg font-semibold mb-3 text-center text-sky-700">Calculadora Asucres Reductors (Rabelain)</h4>
                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
@@ -125,11 +124,53 @@
                           <input type="range" id="rabelain-vmostra-slider" min="0" max="25" value="12.3" step="0.1">
                      </div>
                  </div>
-                 <div class="text-center mb-4"><button id="rabelain-calc-btn">Calcular Asucres</button></div>
+                 <div class="text-center mb-4"><button id="rabelain-calc-btn">Calcular Asucres (Rabelain)</button></div>
                  <div class="output-grid">
                      <div class="output-item md:col-span-2"><span class="output-label">Asucres Reductors</span><span class="output-value" id="rabelain-res-sucres">6.2</span><span class="output-unit">g/L</span></div>
                  </div>
-                 <div id="rabelain-error" class="mt-4 text-center text-red-600 font-medium" style="min-height: 1.5rem;"></div>
+                 <div id="rabelain-error" class="mt-4 text-center text-orange-600 font-medium" style="min-height: 1.5rem;"></div>
+            </div>
+
+            <h4 class="mt-8">Mètode Basat en Estequiometria (Conceptual)</h4>
+            <p>Aquest càlcul utilitza la relació empírica donada i les reaccions redox.</p>
+            <ol class="list-decimal list-inside pl-4 space-y-1 text-sm">
+                <li>\( \Delta V_{tio} = V_{blanc} - V_{mostra} \) (mL)</li>
+                <li>\( \text{meq}_{tio} = \Delta V_{tio} \times N_{tio} \) (meq de tiosulfat equivalents al Cu²⁺ consumit pels asucres)</li>
+                <li>Com \( 2Cu^{2+} \approx I_3^- \approx 2S_2O_3^{2-} \), llavors \( \text{meq}_{Cu^{2+}, reac.} = \text{meq}_{tio} \)</li>
+                <li>\( \text{massa}_{Cu^{2+}, reac.} = \text{meq}_{Cu^{2+}, reac.} \times PE_{Cu^{2+}} \)
+                    <br>(\(PE_{Cu^{2+}} = \text{Massa Atòmica Cu} / n_{electrons} = 63.55 / 1 = 63.55 \, \text{mg/meq}\))</li>
+                <li>\( \text{mg Asucres} = \text{massa}_{Cu^{2+}, reac.} (\text{mg}) \times \frac{6 \, \text{mg asucres}}{10.67 \, \text{mg } Cu^{2+}} \)</li>
+                <li>\( \text{Asucres (g/L)} = \frac{\text{mg Asucres}}{V_{mostra} (\text{mL})} \) (Compte! \(V_{mostra}\) aquí és el volum de vi inicial, 2 mL)</li>
+            </ol>
+             <div class="interactive-block slider-container">
+                 <h4 class="text-lg font-semibold mb-3 text-center text-sky-700">Calculadora Asucres Reductors (Estequiomètric)</h4>
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                     <div>
+                         <div class="slider-label"><label for="stoich-vblanc-slider">Volum Tiosulfat Blanc (mL):</label><span id="stoich-vblanc-value">18.5</span></div>
+                         <input type="range" id="stoich-vblanc-slider" min="10" max="25" value="18.5" step="0.1">
+                     </div>
+                     <div>
+                          <div class="slider-label"><label for="stoich-vmostra-slider">Volum Tiosulfat Mostra (mL):</label><span id="stoich-vmostra-value">12.3</span></div>
+                          <input type="range" id="stoich-vmostra-slider" min="0" max="25" value="12.3" step="0.1">
+                     </div>
+                     <div>
+                          <div class="slider-label"><label for="stoich-ntio-slider">Normalitat Tiosulfat (N):</label><span id="stoich-ntio-value">0.0550</span></div>
+                          <input type="range" id="stoich-ntio-slider" min="0.04" max="0.07" value="0.055" step="0.0005">
+                     </div>
+                     <div>
+                           <label for="stoich-vvi-input">Volum Vi Analitzat (mL):</label>
+                           <input type="number" id="stoich-vvi-input" value="2.0" step="0.1" min="0.1">
+                     </div>
+                 </div>
+                 <div class="text-center mb-4"><button id="stoich-calc-btn">Calcular Asucres (Esteq.)</button></div>
+                 <div class="output-grid">
+                     <div class="output-item"><span class="output-label">ΔV Tio (mL)</span><span class="output-value" id="stoich-res-dv">6.2</span></div>
+                     <div class="output-item"><span class="output-label">meq Tio (meq Cu²⁺ reac.)</span><span class="output-value" id="stoich-res-meq">0.341</span></div>
+                     <div class="output-item"><span class="output-label">mg Cu²⁺ reac.</span><span class="output-value" id="stoich-res-mgcu">21.67</span></div>
+                     <div class="output-item"><span class="output-label">mg Asucres</span><span class="output-value" id="stoich-res-mgsucres">12.19</span></div>
+                     <div class="output-item md:col-span-2"><span class="output-label">Asucres Reductors</span><span class="output-value" id="stoich-res-sucres">6.1</span><span class="output-unit">g/L</span></div>
+                 </div>
+                 <div id="stoich-error" class="mt-4 text-center text-red-600 font-medium" style="min-height: 1.5rem;"></div>
             </div>
 
              <div class="interactive-block slider-container mt-12">
@@ -176,7 +217,7 @@
                 <li><strong>Volumetria Redox</strong></li>
                 <li><strong>Mètode Indirecte / Valoració per Retrocés</strong></li>
                 <li><strong>Iodometria</strong></li>
-                <li><strong>Mètode Empíric</strong></li>
+                <li><strong>Mètode Empíric</strong> (en el càlcul directe \(g/L = \Delta V\))</li>
             </ul>
         </section>
 
@@ -204,10 +245,6 @@
             updateDisplay();
         }
 
-        function calculateStdNormality() {
-             // Empty function - Retained for potential future use or if referenced elsewhere
-        }
-
         function calculateRabelainSugars() {
             const vBlancSlider = document.getElementById('rabelain-vblanc-slider');
             const vMostraSlider = document.getElementById('rabelain-vmostra-slider');
@@ -221,11 +258,65 @@
                  if (isNaN(vBlanc) || isNaN(vMostra) || vBlanc < 0 || vMostra < 0) throw new Error("Volums invàlids.");
                  const sugars_gL = Math.max(0, vBlanc - vMostra);
                  sugarsRes.textContent = sugars_gL.toFixed(1);
+                 if (vMostra > vBlanc + 1e-6) {
+                     errorDiv.textContent = "Advertència: V(mostra) > V(blanc). Resultat = 0 g/L.";
+                 }
              } catch(e) {
                  errorDiv.textContent = e.message;
                  sugarsRes.textContent = "Error";
              }
         }
+
+        function calculateStoichiometricSugars() {
+             const vBlancSlider = document.getElementById('stoich-vblanc-slider');
+             const vMostraSlider = document.getElementById('stoich-vmostra-slider');
+             const nTioSlider = document.getElementById('stoich-ntio-slider');
+             const vViInput = document.getElementById('stoich-vvi-input');
+             const errorDiv = document.getElementById('stoich-error');
+
+             const dvRes = document.getElementById('stoich-res-dv');
+             const meqRes = document.getElementById('stoich-res-meq');
+             const mgCuRes = document.getElementById('stoich-res-mgcu');
+             const mgSucresRes = document.getElementById('stoich-res-mgsucres');
+             const gLSucresRes = document.getElementById('stoich-res-sucres');
+
+             if(!vBlancSlider || !vMostraSlider || !nTioSlider || !vViInput || !errorDiv ||
+                !dvRes || !meqRes || !mgCuRes || !mgSucresRes || !gLSucresRes) return;
+
+             errorDiv.textContent = '';
+             try {
+                 const vBlanc = parseFloat(vBlancSlider.value);
+                 const vMostra = parseFloat(vMostraSlider.value);
+                 const nTio = parseFloat(nTioSlider.value);
+                 const vVi = parseFloat(vViInput.value);
+                 const mmCu = 63.55;
+
+                 if (isNaN(vBlanc) || isNaN(vMostra) || isNaN(nTio) || isNaN(vVi) ||
+                     vBlanc < 0 || vMostra < 0 || nTio <= 0 || vVi <= 0) throw new Error("Entrada invàlida.");
+                 if (vMostra > vBlanc + 1e-6) throw new Error("V(mostra) > V(blanc).");
+
+                 const deltaV = vBlanc - vMostra;
+                 const meqTio = deltaV * nTio;
+                 const meqCuReact = meqTio;
+                 const mgCuReact = meqCuReact * mmCu; // PE(Cu2+) = MM/1 en mg/meq
+                 const mgSucres = mgCuReact * (6 / 10.67);
+                 const gLSucres = mgSucres / vVi;
+
+                 if (!isFinite(gLSucres)) throw new Error("Càlcul invàlid.");
+
+                 dvRes.textContent = deltaV.toFixed(1);
+                 meqRes.textContent = meqCuReact.toFixed(3);
+                 mgCuRes.textContent = mgCuReact.toFixed(2);
+                 mgSucresRes.textContent = mgSucres.toFixed(2);
+                 gLSucresRes.textContent = gLSucres.toFixed(1);
+
+             } catch(e) {
+                 errorDiv.textContent = e.message;
+                 dvRes.textContent = "Error"; meqRes.textContent = "Error"; mgCuRes.textContent = "Error";
+                 mgSucresRes.textContent = "Error"; gLSucresRes.textContent = "Error";
+             }
+        }
+
 
         function updateTitrationIodometryVisual() {
              const vTotalSlider = document.getElementById('vis-vtio-total-slider');
@@ -262,13 +353,19 @@
 
         setupSlider('rabelain-vblanc-slider', 'rabelain-vblanc-value', {decimals: 1, callback: calculateRabelainSugars});
         setupSlider('rabelain-vmostra-slider', 'rabelain-vmostra-value', {decimals: 1, callback: calculateRabelainSugars});
+        setupSlider('stoich-vblanc-slider', 'stoich-vblanc-value', {decimals: 1, callback: calculateStoichiometricSugars});
+        setupSlider('stoich-vmostra-slider', 'stoich-vmostra-value', {decimals: 1, callback: calculateStoichiometricSugars});
+        setupSlider('stoich-ntio-slider', 'stoich-ntio-value', {decimals: 4, callback: calculateStoichiometricSugars});
+        document.getElementById('stoich-vvi-input')?.addEventListener('input', calculateStoichiometricSugars);
         setupSlider('vis-vtio-total-slider', 'vis-vtio-total-value', {decimals: 1, callback: updateTitrationIodometryVisual});
         setupSlider('vis-vtio-added-slider', 'vis-vtio-added-value', {decimals: 1, callback: updateTitrationIodometryVisual});
 
         document.getElementById('rabelain-calc-btn')?.addEventListener('click', calculateRabelainSugars);
+        document.getElementById('stoich-calc-btn')?.addEventListener('click', calculateStoichiometricSugars);
 
         window.addEventListener('load', () => {
             calculateRabelainSugars();
+            calculateStoichiometricSugars();
             updateTitrationIodometryVisual();
         });
 
@@ -276,5 +373,3 @@
 
 </body>
 </html>
-
-

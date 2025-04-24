@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Volumetria Redox: Determinació d'Asucres Reductors</title>
+    <title>Volumetria Redox: Determinació d'Asucres Reductors (Rabelain)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,10 +39,10 @@
         .slider-label { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;}
         .slider-label span:last-child { font-size: 0.9rem; font-weight: 500; color: #075985; min-width: 70px; text-align: right;}
         .titration-flask { width: 100px; height: 150px; border: 2px solid #9ca3af; border-radius: 0 0 50px 50px; margin: 1rem auto; position: relative; background-color: #ffffff; overflow: hidden;}
-        .titration-liquid { position: absolute; bottom: 0; left: 0; width: 100%; height: 80%; transition: background-color 0.3s; background-color: #a5522a; } /* Brown for I3- */
-        .titration-color-pale-yellow { background-color: #fef9c3 !important; } /* Pale Yellow */
-        .titration-color-blue { background-color: #60a5fa !important; } /* Blue */
-        .titration-color-clear { background-color: #eff6ff !important; } /* Very light blue */
+        .titration-liquid { position: absolute; bottom: 0; left: 0; width: 100%; height: 80%; transition: background-color 0.1s linear; background-color: #a5522a; }
+        .titration-color-pale-yellow { background-color: #fef9c3 !important; }
+        .titration-color-blue { background-color: #60a5fa !important; }
+        .titration-color-clear { background-color: #eff6ff !important; }
         .burette { width: 20px; height: 180px; background-color: #e0f2fe; border: 1px solid #9ca3af; border-radius: 5px 5px 0 0; margin: 1rem auto 0; position: relative; overflow: hidden;}
         .burette-liquid { position: absolute; bottom: 0; left: 0; width: 100%; background-color: #60a5fa; transition: height 0.1s linear;}
         .burette-tip { width: 4px; height: 15px; background-color: #9ca3af; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%);}
@@ -53,7 +53,7 @@
     <header class="bg-gradient-to-r from-sky-600 to-cyan-600 text-white shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4">
             <h1 class="text-2xl md:text-3xl font-bold">11.4 Determinació d'Asucres Reductors</h1>
-             <p class="text-lg font-semibold mt-1">Mètode de H. Rabelain (Basat en Lane-Eynon/Iodometria)</p>
+             <p class="text-lg font-semibold mt-1">Mètode de H. Rabelain (Iodometria)</p>
         </div>
     </header>
 
@@ -69,41 +69,38 @@
             <h2 class="text-sky-700 border-b-2 border-sky-200 pb-2 mb-6">Fonament del Mètode</h2>
             <p>Aquest mètode és una <strong>valoració iodomètrica per retrocés</strong> per determinar l'excés de Cu(II) que no ha reaccionat amb els asucres.</p>
             <ol class="list-decimal list-inside pl-4 space-y-2">
-                <li><strong>Oxidació dels asucres:</strong> S'afegeix un excés conegut de Cu(II) (solució de sulfat cúpric) a la mostra (vi). En medi alcalí (proporcionat per NaOH i complexant tartrat per evitar precipitació de Cu(OH)₂) i en calent (ebullició), els asucres reductors redueixen una part del Cu(II) a Cu(I), que normalment precipita com a òxid cuprós (\(Cu_2O\), vermell).
+                <li><strong>Oxidació dels asucres:</strong> S'afegeix un excés conegut de Cu(II) a la mostra en medi alcalí (amb tartrat com a complexant) i s'escalfa. Els asucres reductors redueixen part del Cu(II) a Cu(I) (precipita com Cu₂O).
                     <div class="math-block">$$ \text{Asúcar Reductor} + Cu^{2+}(\text{excés}) \xrightarrow{\text{OH}^-, \Delta} \text{Prod. Oxidats} + Cu_2O(s) + Cu^{2+}(\text{romanent}) $$</div>
                 </li>
-                <li><strong>Reacció amb Iodur:</strong> Després de refredar i acidificar, s'afegeix iodur potàssic (KI) en excés. El Cu(II) romanent oxida el iodur (I⁻) a iode (present com a ió triiodur, I₃⁻), mentre ell es redueix a Cu(I) (que pot precipitar com a CuI si hi ha prou I⁻). La reacció clau segons el text és:
+                <li><strong>Reacció amb Iodur:</strong> Després de refredar i acidificar, s'afegeix KI en excés. El Cu(II) romanent oxida I⁻ a I₃⁻ (ió triiodur, marró).
                      <div class="math-block">$$ 2Cu^{2+}(\text{romanent}) + 3I^- \rightarrow 2Cu^+ + I_3^- $$</div>
-                     (Nota: Sovint s'escriu \(2Cu^{2+} + 4I^- \rightarrow 2CuI(s) + I_2\), però seguim l'estequiometria donada). La quantitat de I₃⁻ formada és proporcional al Cu(II) que <strong>no</strong> va reaccionar amb els asucres.
                 </li>
-                <li><strong>Valoració amb Tiosulfat:</strong> El iode (I₃⁻) format es valora amb una dissolució estandarditzada de tiosulfat sòdic (\(Na_2S_2O_3\)) fins a la desaparició del color del iode. S'utilitza midó com a indicador prop del punt final (forma un complex blau intens amb I₃⁻).
+                <li><strong>Valoració amb Tiosulfat:</strong> El I₃⁻ format es valora amb Na₂S₂O₃ estandarditzat, utilitzant midó com a indicador prop del punt final.
                      <div class="math-block">$$ I_3^- + 2S_2O_3^{2-} \rightarrow 3I^- + S_4O_6^{2-} $$</div>
-                     (Ió tetrationat)
                 </li>
-                 <li><strong>Assaig en Blanc:</strong> Es realitza un assaig paral·lel sense mostra (substituint el vi per aigua). En aquest cas, tot el Cu(II) inicial reacciona amb el KI, generant la màxima quantitat de I₃⁻ i requerint un volum màxim de tiosulfat (\(V_{blanc}\)).</li>
-                 <li><strong>Càlcul:</strong> La diferència entre el volum de tiosulfat gastat en el blanc i el gastat en la mostra (\(V_{blanc} - V_{mostra}\)) és proporcional a la quantitat de Cu(II) que va reaccionar amb els asucres i, per tant, proporcional a la concentració d'asucres reductors. El mètode de Rabelain utilitza una relació empírica directa: \( \text{Asucres Reductors (g/L)} = V_{blanc} (\text{mL}) - V_{mostra} (\text{mL}) \).</li>
+                 <li><strong>Assaig en Blanc:</strong> Es fa igual però sense mostra (amb aigua). Tot el Cu(II) inicial reacciona amb KI, generant la màxima quantitat de I₃⁻ i requerint un volum màxim de tiosulfat (\(V_{blanc}\)).</li>
+                 <li><strong>Càlcul:</strong> La diferència \(V_{blanc} - V_{mostra}\) és proporcional als asucres. El mètode Rabelain utilitza la relació empírica: \( \text{Asucres (g/L)} = V_{blanc} (\text{mL}) - V_{mostra} (\text{mL}) \).</li>
             </ol>
-            <p>Les reaccions amb iodur i tiosulfat es realitzen en medi àcid o neutre per evitar reaccions secundàries del iode en medi bàsic.</p>
         </section>
 
         <section id="reactius-proc" class="mb-12 p-6 rounded-lg shadow-lg section-bg-white">
             <h2 class="text-sky-700 border-b-2 border-sky-200 pb-2 mb-6">Reactius i Procediment Experimental</h2>
             <h3>Reactius</h3>
              <ul class="list-disc list-inside pl-4 mb-4 text-sm">
-                 <li><strong>Sol. Sulfat Cúpric:</strong> 41.92 g CuSO₄·5H₂O + 10 mL H₂SO₄ 1N en 1 L.</li>
-                 <li><strong>Sol. Alcalina Seignette:</strong> 250 g Tartrat Na/K + 80 g NaOH en 1 L.</li>
-                 <li><strong>Sol. Iodur Potàssic:</strong> 300 g KI + 100 mL NaOH 1N en 1 L.</li>
-                 <li><strong>Àcid Sulfúric 16% (p/p):</strong> Dilució adequada de H₂SO₄ conc.</li>
-                 <li><strong>Sol. Midó 1% (p/v):</strong> Indicador.</li>
-                 <li><strong>Sol. Tiosulfat Sòdic (~0.055 N):</strong> 13.777 g Na₂S₂O₃·5H₂O + 50 mL NaOH 1N en 1 L. (Nota: Cal estandarditzar-la, tot i que el mètode Rabelain sembla assumir una relació empírica directa).</li>
+                 <li>Sol. Sulfat Cúpric: 41.92 g CuSO₄·5H₂O + 10 mL H₂SO₄ 1N en 1 L.</li>
+                 <li>Sol. Alcalina Seignette: 250 g Tartrat Na/K + 80 g NaOH en 1 L.</li>
+                 <li>Sol. Iodur Potàssic: 300 g KI + 100 mL NaOH 1N en 1 L.</li>
+                 <li>Àcid Sulfúric 16% (p/p).</li>
+                 <li>Sol. Midó 1% (p/v).</li>
+                 <li>Sol. Tiosulfat Sòdic (~0.055 N): 13.777 g Na₂S₂O₃·5H₂O + 50 mL NaOH 1N en 1 L. (Cal estandarditzar-la per a mètodes no empírics).</li>
              </ul>
             <h3>Procediment Experimental</h3>
              <ol class="list-decimal list-inside pl-4 space-y-2">
-                 <li><strong>Mostra:</strong> En un erlenmeyer, posar 10 mL sol. Cu²⁺ + 5 mL sol. Alcalina + 2 mL vi. Bullir 2 min.</li>
-                 <li><strong>Blanc:</strong> En un altre erlenmeyer, posar 10 mL sol. Cu²⁺ + 5 mL sol. Alcalina + 2 mL aigua. Bullir 2 min.</li>
-                 <li>Refredar ambdós erlenmeyers (aigua corrent).</li>
-                 <li>Afegir successivament a cada erlenmeyer, agitant: 10 mL sol. KI + 10 mL H₂SO₄ 16%. (Es forma I₃⁻, color marró).</li>
-                 <li><strong>Valoració:</strong> Valorar cada solució amb Na₂S₂O₃ fins a color groc pàl·lid.</li>
+                 <li><strong>Mostra:</strong> Erlenmeyer + 10 mL sol. Cu²⁺ + 5 mL sol. Alcalina + 2 mL vi. Bullir 2 min.</li>
+                 <li><strong>Blanc:</strong> Erlenmeyer + 10 mL sol. Cu²⁺ + 5 mL sol. Alcalina + 2 mL aigua. Bullir 2 min.</li>
+                 <li>Refredar ambdós.</li>
+                 <li>Afegir a cada un, agitant: 10 mL sol. KI + 10 mL H₂SO₄ 16%.</li>
+                 <li><strong>Valoració:</strong> Valorar cada solució amb Na₂S₂O₃ fins a groc pàl·lid.</li>
                  <li>Afegir unes gotes de midó (color blau/negre intens).</li>
                  <li>Continuar valorant amb Na₂S₂O₃ gota a gota fins a desaparició completa del color blau (punt final). Anotar \(V_{blanc}\) i \(V_{mostra}\).</li>
              </ol>
@@ -111,10 +108,10 @@
 
         <section id="calculs-app" class="mb-12 p-6 rounded-lg shadow-lg section-bg-light dynamic-content">
             <h2 class="text-sky-700 border-b-2 border-sky-200 pb-2 mb-6">Càlculs i Aplicacions Interactives</h2>
-            <h3>1. Càlcul del Contingut d'Asucres Reductors</h3>
-            <p>Segons el mètode de Rabelain descrit, la concentració d'asucres reductors (expressada en g/L) s'obté directament de la diferència de volums de tiosulfat gastats:</p>
-            <div class="math-block"> $$ \text{Asucres Reductors (g/L)} = V_{blanc} (\text{mL}) - V_{mostra} (\text{mL}) $$ </div>
-            <p>Aquesta relació és empírica i vàlida sota les condicions experimentals especificades (volums de reactius, temps d'ebullició, normalitat aproximada del tiosulfat). Es basa en la relació donada: 0.01067 g Cu²⁺ oxiden 6 mg d'asucres.</p>
+            <h3>1. Càlcul del Contingut d'Asucres Reductors (Mètode Rabelain)</h3>
+            <p>La concentració d'asucres reductors (expressada en g/L) s'obté directament de la diferència de volums de tiosulfat gastats:</p>
+            <div class="math-block"> $$ \text{Asucres Reductors (g/L)} = \max(0, V_{blanc} (\text{mL}) - V_{mostra} (\text{mL})) $$ </div>
+            <p>Aquesta relació és empírica i vàlida sota les condicions experimentals especificades.</p>
 
              <div class="interactive-block slider-container">
                  <h4 class="text-lg font-semibold mb-3 text-center text-sky-700">Calculadora Asucres Reductors (Rabelain)</h4>
@@ -137,10 +134,10 @@
 
              <div class="interactive-block slider-container mt-12">
                   <h4 class="text-lg font-semibold mb-3 text-center text-sky-700">Visualització Conceptual Valoració Iodomètrica</h4>
-                   <p class="text-sm text-center text-gray-600 mb-4">Simula l'addició de tiosulfat i el canvi de color.</p>
+                   <p class="text-sm text-center text-gray-600 mb-4">Simula l'addició de tiosulfat i el canvi de color (per al blanc o la mostra).</p>
                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
                        <div>
-                           <div class="slider-label"><label for="vis-vtio-total-slider">Volum Tio. Total Esperat (mL):</label><span id="vis-vtio-total-value">15.0</span></div>
+                           <div class="slider-label"><label for="vis-vtio-total-slider">Volum Tio. Punt Final (mL):</label><span id="vis-vtio-total-value">15.0</span></div>
                            <input type="range" id="vis-vtio-total-slider" min="5" max="25" value="15.0" step="0.1">
                        </div>
                        <div>
@@ -148,7 +145,7 @@
                             <input type="range" id="vis-vtio-added-slider" min="0" max="25" value="0.0" step="0.1">
                        </div>
                    </div>
-                   <div class="flex justify-around items-end">
+                   <div class="flex justify-around items-end mt-6">
                         <div class="text-center">
                             <div class="burette">
                                 <div id="vis-burette-liquid" class="burette-liquid" style="height: 100%;"></div>
@@ -168,18 +165,18 @@
             <h3>2. Indicador de Midó</h3>
             <p>Per què s'afegeix el midó prop del punt final?</p>
             <ul class="list-disc list-inside pl-4 mb-4">
-                <li>El complex blau midó-iode és molt intens. Si s'afegeix al principi, quan hi ha molt iode, el color pot ser tan fosc que emmascari el punt final.</li>
-                <li>A concentracions altes de iode, aquest pot adsorbir-se fortament a les partícules de midó, fent que la decoloració al punt final sigui lenta i poc nítida.</li>
-                <li>S'afegeix quan la solució ja ha passat de marró (molt I₃⁻) a groc pàl·lid (poc I₃⁻). Llavors, el complex blau format és intens però desapareix bruscament amb l'última gota de tiosulfat que consumeix el poc I₃⁻ restant.</li>
+                <li>El complex blau midó-iode és molt intens i podria emmascarar el punt final si s'afegeix al principi.</li>
+                <li>A concentracions altes de iode, aquest pot adsorbir-se fortament al midó, fent la decoloració final lenta i poc nítida.</li>
+                <li>S'afegeix quan la solució és groc pàl·lid (poc I₃⁻), formant un color blau intens que desapareix bruscament al punt final.</li>
             </ul>
 
             <h3>3. Tipus d'Anàlisi</h3>
             <p>Aquest és un exemple de:</p>
             <ul class="list-disc list-inside pl-4 mb-4">
-                <li><strong>Volumetria Redox:</strong> Es basa en reaccions d'oxidació-reducció.</li>
-                <li><strong>Mètode Indirecte / Valoració per Retrocés:</strong> No es valora directament l'analit (asucres), sinó l'excés d'un reactiu (Cu²⁺) que s'ha fet reaccionar prèviament amb l'analit. A més, la determinació de l'excés de Cu²⁺ es fa indirectament valorant el I₃⁻ que genera.</li>
-                <li><strong>Iodometria:</strong> És la valoració del iode (I₂ o I₃⁻) format en una reacció prèvia, generalment amb tiosulfat. (No confondre amb *iodimetria*, que és la valoració directa amb una solució de iode).</li>
-                <li><strong>Mètode Empíric:</strong> El càlcul final es basa en una relació empírica (\( \Delta V \rightarrow g/L \)) en lloc d'un càlcul estequiomètric complet, degut a la complexitat de la reacció sucre-Cu²⁺.</li>
+                <li><strong>Volumetria Redox</strong></li>
+                <li><strong>Mètode Indirecte / Valoració per Retrocés</strong></li>
+                <li><strong>Iodometria</strong></li>
+                <li><strong>Mètode Empíric</strong></li>
             </ul>
         </section>
 
@@ -199,10 +196,6 @@
             const valueAttr = options.valueAttr || 'value';
             const updateDisplay = () => {
                 valueSpan.textContent = formatFunc(slider[valueAttr]);
-                if(options.displayId) {
-                    const displayEl = document.getElementById(options.displayId);
-                    if(displayEl) displayEl.textContent = Math.pow(10, parseFloat(slider[valueAttr])).toExponential(1);
-                }
             };
             slider.addEventListener('input', () => {
                 updateDisplay();
@@ -212,26 +205,7 @@
         }
 
         function calculateStdNormality() {
-            const massaOxalatSlider = document.getElementById('std-massa-oxalat-slider');
-            const volKMnO4Slider = document.getElementById('std-vol-kmno4-slider');
-            const normalityRes = document.getElementById('std-res-normality');
-            const errorDiv = document.getElementById('std-error');
-             if(!massaOxalatSlider || !volKMnO4Slider || !normalityRes || !errorDiv) return;
-            errorDiv.textContent = '';
-            try {
-                const massa_mg = parseFloat(massaOxalatSlider.value);
-                const volum_ml = parseFloat(volKMnO4Slider.value);
-                if (isNaN(massa_mg) || isNaN(volum_ml) || massa_mg <= 0 || volum_ml <= 0) throw new Error("Entrada invàlida.");
-                const massa_g = massa_mg / 1000;
-                const volum_l = volum_ml / 1000;
-                const peq_oxalat = 67.00;
-                const normality = massa_g / (peq_oxalat * volum_l);
-                 if (!isFinite(normality) || normality <= 0) throw new Error("Càlcul de Normalitat invàlid.");
-                normalityRes.textContent = normality.toFixed(5);
-            } catch(e) {
-                errorDiv.textContent = e.message;
-                normalityRes.textContent = "Error";
-            }
+             // Empty function - Retained for potential future use or if referenced elsewhere
         }
 
         function calculateRabelainSugars() {
@@ -245,8 +219,7 @@
                  const vBlanc = parseFloat(vBlancSlider.value);
                  const vMostra = parseFloat(vMostraSlider.value);
                  if (isNaN(vBlanc) || isNaN(vMostra) || vBlanc < 0 || vMostra < 0) throw new Error("Volums invàlids.");
-                 if (vMostra > vBlanc) throw new Error("V(mostra) no pot ser > V(blanc).");
-                 const sugars_gL = vBlanc - vMostra;
+                 const sugars_gL = Math.max(0, vBlanc - vMostra);
                  sugarsRes.textContent = sugars_gL.toFixed(1);
              } catch(e) {
                  errorDiv.textContent = e.message;
@@ -266,39 +239,35 @@
              const vAdded = parseFloat(vAddedSlider.value);
              vAddedSlider.max = vTotal + 5;
 
-             const fractionAdded = vTotal > 1e-6 ? vAdded / vTotal : 0;
+             const fractionAdded = vTotal > 1e-6 ? vAdded / vTotal : (vAdded > 1e-6 ? 1 : 0);
              const buretteLevel = 100 - (vAdded / parseFloat(vAddedSlider.max)) * 100;
              buretteLiquid.style.height = `${Math.max(0, buretteLevel)}%`;
 
              flaskLiquid.classList.remove('titration-color-pale-yellow', 'titration-color-blue', 'titration-color-clear');
+             flaskLiquid.style.backgroundColor = '#a5522a';
 
              if (fractionAdded < 0.95) {
-                 flaskLiquid.style.backgroundColor = '#a5522a';
-                 statusText.textContent = "Valorant I₃⁻...";
+                 statusText.textContent = "Valorant I₃⁻ (marró)";
              } else if (fractionAdded < 0.999) {
                   flaskLiquid.classList.add('titration-color-pale-yellow');
-                  statusText.textContent = "Prop del final (afegir midó)";
+                  statusText.textContent = "Prop del final (groc pàl·lid)";
              } else if (fractionAdded < 1.001) {
                   flaskLiquid.classList.add('titration-color-blue');
-                  statusText.textContent = "Amb midó, prop del final";
+                  statusText.textContent = "Amb midó (blau)";
              } else {
                   flaskLiquid.classList.add('titration-color-clear');
                   statusText.textContent = "Punt final (incolor)";
              }
         }
 
-        setupSlider('std-massa-oxalat-slider', 'std-massa-oxalat-value', {decimals: 1, callback: calculateStdNormality});
-        setupSlider('std-vol-kmno4-slider', 'std-vol-kmno4-value', {decimals: 1, callback: calculateStdNormality});
         setupSlider('rabelain-vblanc-slider', 'rabelain-vblanc-value', {decimals: 1, callback: calculateRabelainSugars});
         setupSlider('rabelain-vmostra-slider', 'rabelain-vmostra-value', {decimals: 1, callback: calculateRabelainSugars});
         setupSlider('vis-vtio-total-slider', 'vis-vtio-total-value', {decimals: 1, callback: updateTitrationIodometryVisual});
         setupSlider('vis-vtio-added-slider', 'vis-vtio-added-value', {decimals: 1, callback: updateTitrationIodometryVisual});
 
-        document.getElementById('std-calc-btn')?.addEventListener('click', calculateStdNormality);
         document.getElementById('rabelain-calc-btn')?.addEventListener('click', calculateRabelainSugars);
 
         window.addEventListener('load', () => {
-            calculateStdNormality();
             calculateRabelainSugars();
             updateTitrationIodometryVisual();
         });
@@ -307,4 +276,5 @@
 
 </body>
 </html>
+
 
